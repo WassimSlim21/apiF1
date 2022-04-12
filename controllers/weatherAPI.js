@@ -38,24 +38,6 @@ exports.getSchedulesExterneAPI = (request, response) => {
          if(race)
         data.push({"Year" :race.date.substring(6,10), "Location": race.location});
        });
-         
-        //  try{
-        //    schedulesRequest.get("schedule_"+ year +".json", (error, results) => {
-        //      if (error) {
-        //        throw error
-        //      }
-        //       if (results) {
-        //         data = JSON.parse(results.body);
-        //      schedules.push({year : data.location})
-        //      }
-            
-        //    }); 
-   
-        //  }
-        //  catch {
-        //    error: console.log("error");
-        //  }
-       
        response.status(200).json(data)
      })
       };

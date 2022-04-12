@@ -13,11 +13,6 @@ var constructorsRouters = require('./routes/constructors');
 var weatherAPIRouters = require('./routes/weatherAPI');
 
 var app = express();
-var port = process.env.PORT || 3001
-
-app.listen(port,()=>{
-  console.log(`started up at port ${port}`);
-});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

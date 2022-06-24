@@ -43,18 +43,15 @@ var UserSchema = new Schema({
   phone: {
     type: String
   },
-  pack: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Pack",
-  },
-  company: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Company"
-  },
   publication: [
     {
       type: String,
       ref: "Publication"
+    }
+  ],
+  picture: [
+    {      
+      type: String,
     }
   ],
   role: {

@@ -7,6 +7,12 @@ var Publication = new Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
    },
+   rapport_page:{
+      type: String
+   },
+   rapport_name:{
+      type: String
+   },
    content: {
       type: String
    },
@@ -18,7 +24,31 @@ var Publication = new Schema({
     },
    deleted_at: {
       type: Date
-   }
+   },
+   comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+        default:null
+      }
+    ],
+    likes: [
+       {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Like",
+         default:null
+
+       }
+     ],
+   dislikes: [
+      {
+      type: mongoose.Schema.Types.ObjectId,
+          ref: "DisLike",
+          default:null
+
+        }
+      ],
+    
 });
 
 

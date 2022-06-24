@@ -5,9 +5,12 @@ var mongoose = require('mongoose');
 var config = require('./config/database');
 var passport = require('passport');
 var bodyParser = require('body-parser');
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var packsRouter = require('./routes/pack');
+var driversRouter = require('./routes/drivers');
+var constructorsRouters = require('./routes/constructors');
+var weatherAPIRouters = require('./routes/weatherAPI');
+var publicationRoute = require('./routes/publication');
+
 const http = require('http').Server(app);
 
 console.log('in app.js')
@@ -24,7 +27,7 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
 
   if ('OPTIONS' === req.method) {
-    res.send(200);
+    res.sendStatus(200);
   }
   else {
     next();
@@ -44,7 +47,7 @@ require('./config/passport')(passport);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+app.use(express.static(__dirname + '/public/images'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
@@ -59,10 +62,15 @@ app.get('/', function (req, res, next) {
 
 
 
+
+
 /* Global routers */
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/packs', packsRouter);
+app.use('/drivers', driversRouter);
+app.use('/constructors', constructorsRouters);
+app.use('/weatherAPI', weatherAPIRouters);
+app.use('/publication', publicationRoute);
+
 
 
 /*--------------------*/
